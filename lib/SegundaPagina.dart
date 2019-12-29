@@ -170,7 +170,7 @@ class _SegundaPaginaState extends State<SegundaPagina> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    _removerTerreno(idUsuarioLogado, idTerreno);
+                                    _showDialog(idUsuarioLogado, idTerreno);
                                   },
                                   child: Padding(
                                     padding: EdgeInsets.only(right: 0),
@@ -189,6 +189,38 @@ class _SegundaPaginaState extends State<SegundaPagina> {
 
             }
         }
+      },
+    );
+  }
+
+
+  void _showDialog(idUsuarioLogado, idTerreno) {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Deseja realmente excluir o lote?"),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Sim"),
+              onPressed: (){
+                _removerTerreno(idUsuarioLogado, idTerreno);
+                Navigator.of(context).pop();
+              },
+
+            ),
+            new FlatButton(
+              child: new Text("Cancelar"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+
+            ),
+          ],
+        );
       },
     );
   }
