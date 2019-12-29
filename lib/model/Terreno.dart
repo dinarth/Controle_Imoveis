@@ -82,12 +82,6 @@ class Terreno{
         .setData(terreno.toMap());
   }
 
-  Future<String> retornarUidTerreno() async {
-//    final Firebase user = await FirebaseAuth.instance.currentUser();
-//    final String uid = user.uid.toString();
-//    return uid;
-  }
-
   void excluirTerreno(idUsuarioLogado, idTerreno){
     Firestore db = Firestore.instance;
 
@@ -98,6 +92,17 @@ class Terreno{
         .updateData({
       "apresentarRegistro" : '0'
     });
+  }
+
+  void alterarTerreno(Terreno terreno, idUsuarioLogado, idTerreno){
+    Firestore db = Firestore.instance;
+
+    db.collection("terrenos")
+        .document(idUsuarioLogado)
+        .collection("terreno")
+        .document(idTerreno)
+        .updateData(terreno.toMap());
+
   }
 
 

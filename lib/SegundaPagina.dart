@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:controle_lote/AtualizarTerreno.dart';
 import 'package:controle_lote/model/Usuario.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,6 @@ class _SegundaPaginaState extends State<SegundaPagina> {
   final _controller = StreamController<QuerySnapshot>.broadcast();
   Firestore db = Firestore.instance;
   Future<String> idUsuario;
-  String idTerreno;
   String idUsuarioLogado;
 
 
@@ -127,7 +127,7 @@ class _SegundaPaginaState extends State<SegundaPagina> {
                         String dataPrimeiraParcela            = item['dataPrimeiraParcela'];
                         String dataUltimaParcela              = item['dataUltimaParcela'];
                         String apresentarRegistro             = item['apresentarRegistro'];
-                        this.idTerreno = item.documentID;
+                        String idTerreno                      = item.documentID;
 
                         Terreno terreno = new Terreno(
                             cidade,
@@ -155,7 +155,10 @@ class _SegundaPaginaState extends State<SegundaPagina> {
                               children: <Widget>[
                                 GestureDetector(
                                   onTap: () {
-                                    //_atualizarTerreno(terreno: terreno);
+                                    Navigator.of(context).push(MaterialPageRoute(
+                                        builder: (context) =>
+                                            AtualizarTerreno(terreno, idTerreno, idUsuarioLogado)));
+                                    //  _atualizarTerreno(terreno: terreno);
                                   },
                                   child: Padding(
                                     padding: EdgeInsets.only(right: 0),
@@ -201,10 +204,28 @@ class _SegundaPaginaState extends State<SegundaPagina> {
     String dataPrimeiraParcela    = "";
     String dataUltimaParcela      = "";
     String apresentarRegistro     = "";
-    Terreno terreno = new Terreno(cidade, descricao,titulo, vlParcela, vlTotal, vlEntrada, dataPrimeiraParcela, dataUltimaParcela, apresentarRegistro);
+    Terreno terreno = new Terreno(cidade, descricao,titulo, vlParcela, vlTotal,
+        vlEntrada, dataPrimeiraParcela, dataUltimaParcela, apresentarRegistro);
 
     terreno.excluirTerreno(idUsuarioLogado, idTerreno);
 
 
+  }
+
+  void _atualizarTerreno({Terreno terreno}) {
+
+    String titulo                 = "";
+    String cidade                 = "";
+    String descricao              = "";
+    String vlTotal                = "";
+    String vlEntrada              = "";
+    String vlParcela              = "";
+    String dataPrimeiraParcela    = "";
+    String dataUltimaParcela      = "";
+    String apresentarRegistro     = "";
+    Terreno terreno = new Terreno(cidade, descricao,titulo, vlParcela, vlTotal,
+        vlEntrada, dataPrimeiraParcela, dataUltimaParcela, apresentarRegistro);
+
+  //  terreno.excluirTerreno(idUsuarioLogado, idTerreno);
   }
 }

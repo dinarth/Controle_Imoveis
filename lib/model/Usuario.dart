@@ -17,6 +17,14 @@ class Usuario extends Model {
 
   bool isLoading = false;
 
+  String _idUsuarioLogado;
+
+  String get idUsuarioLogado => _idUsuarioLogado;
+
+  set idUsuarioLogado(String value) {
+    _idUsuarioLogado = value;
+  }
+
   @override
   void addListener(VoidCallback listener) {
     super.addListener(listener);
