@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:controle_lote/model/Terreno_old.dart';
+import 'package:controle_lote/model/Terreno.dart';
 
 class TerrenoHelper {
   static final String nomeTabela                = 'terrenos';

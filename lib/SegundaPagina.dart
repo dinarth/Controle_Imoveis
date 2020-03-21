@@ -140,7 +140,7 @@ class _SegundaPaginaState extends State<SegundaPagina> {
                             dataUltimaParcela,
                             apresentarRegistro);
 
-                        return Card(
+                        return  Card(
                           child: ListTile(
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
@@ -191,6 +191,7 @@ class _SegundaPaginaState extends State<SegundaPagina> {
         }
       },
     );
+
   }
 
 

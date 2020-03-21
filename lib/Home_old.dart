@@ -19,7 +19,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   final _pageController = PageController();
   Usuario usuario = new Usuario();
   TabController _tabController;
-  String titulo = "Controle de Terrenos";
 
 
 
@@ -46,32 +45,36 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           return Center(
             child: CircularProgressIndicator(),
           );
-        return PageView(
-          controller: _pageController,
-          children: <Widget>[
-            Scaffold(
+        return Scaffold(
 
-              appBar: AppBar(
-              centerTitle: true,
-              title: Text(titulo),
-              ),
-              body: SegundaPagina(),
-              drawer: CustomDrawer(_pageController),
-              floatingActionButton: FloatingActionButton(
-              onPressed: _sair,
-              ),
+          appBar: AppBar(
+            centerTitle: true,
+            title: Text("Controle de Terrenos"),
+            bottom: TabBar(
+              controller: _tabController,
+
+              tabs: <Widget>[
+                Tab(
+                  text: "Listar",
+                  icon: Icon(Icons.list),
+                ),
+                Tab(
+                  text: "Cadastrar",
+                  icon: Icon(Icons.add),
+                ),
+              ],
             ),
-            Scaffold(
-              appBar: AppBar(
-                title: Text(titulo),
-                centerTitle: true,
-              ),
-              drawer: CustomDrawer(_pageController),
-              body:PrimeiraPagina(),
-            ),
-        ],
+          ),
+          body: TabBarView(
+            controller: _tabController,
+            children: <Widget>[SegundaPagina(), PrimeiraPagina()],
+          ),
+          drawer: CustomDrawer(_pageController),
+          floatingActionButton: FloatingActionButton(
+            onPressed: _sair,
+          ),
         );
-      },
+        },
 
     );
   }

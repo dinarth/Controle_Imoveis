@@ -78,7 +78,9 @@ class _AtualizarTerrenoState extends State<AtualizarTerreno> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+        appBar: AppBar(
+          title: Text("Controle de Terrenos"),
+        ),
             body: Container(
 
               child: SingleChildScrollView(
