@@ -26,6 +26,7 @@ class _PrimeiraPaginaState extends State<PrimeiraPagina> {
   TextEditingController _vlParcelaTerrenoController    = MoneyMaskedTextController(decimalSeparator: ',', thousandSeparator: '.',leftSymbol: 'R\$');
   TextEditingController _dataPrimeiraParcelaController = TextEditingController();
   TextEditingController _dataUltimaParcelaController   = TextEditingController();
+  TextEditingController _dataDiaDoPagamentoController  = TextEditingController();
 
   Usuario usuario = new Usuario();
 
@@ -231,6 +232,24 @@ class _PrimeiraPaginaState extends State<PrimeiraPagina> {
                 ),
 
               ),
+              DateTimeField(
+                format: format,
+                onShowPicker: (context, currentValue){
+                  return showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(anoAtual),
+                      lastDate: DateTime(anoAtual + 20));
+                },
+                controller: _dataDiaDoPagamentoController,
+                style: TextStyle(
+                    fontSize: 22
+                ),
+                decoration: InputDecoration(
+                    labelText: "Dia do pagamento"
+                ),
+
+              ),
 
 
               Padding(
@@ -282,11 +301,12 @@ class _PrimeiraPaginaState extends State<PrimeiraPagina> {
     String vlParcela              = _vlParcelaTerrenoController.text.substring(2);
     String dataPrimeiraParcela    = _dataPrimeiraParcelaController.text;
     String dataUltimaParcela      = _dataUltimaParcelaController.text;
+    String dataDiaDoPagamento     = _dataDiaDoPagamentoController.text;
     String apresentarRegistro     = '1';
 //    String idUsuarioLogado        = uid;
 
     //criando objeto Terreno
-    Terreno terreno               =  Terreno(cidade, descricao,titulo, vlParcela, vlTotal, vlEntrada, dataPrimeiraParcela, dataUltimaParcela, apresentarRegistro);
+    Terreno terreno               =  Terreno(cidade, descricao,titulo, vlParcela, vlTotal, vlEntrada, dataPrimeiraParcela, dataUltimaParcela, dataDiaDoPagamento, apresentarRegistro);
 
     terreno.cadastrarTerreno(terreno, idUsuarioLogado);
 
@@ -298,6 +318,7 @@ class _PrimeiraPaginaState extends State<PrimeiraPagina> {
     _vlParcelaTerrenoController.text    = "0.00";
     _dataPrimeiraParcelaController.text = "";
     _dataUltimaParcelaController.text   = "";
+    _dataDiaDoPagamentoController.text  = "";
 
   }
 

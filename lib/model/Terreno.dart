@@ -15,6 +15,7 @@ class Terreno{
   String _vlParcela;
   String _dataPrimeiraParcela;
   String _dataUltimaParcela;
+  String _dataDiaDoPagamento;
   String _apresentarRegistro;
 
 
@@ -26,7 +27,7 @@ class Terreno{
 
 
 
-  Terreno(cidade, descricao,titulo, vlParcela, vlTotal, vlEntrada, dataPrimeiraParcela, dataUltimaParcela, apresentarRegistro){
+  Terreno(cidade, descricao,titulo, vlParcela, vlTotal, vlEntrada, dataPrimeiraParcela, dataUltimaParcela, dataDiaDoPagamento, apresentarRegistro){
     this.cidade                     = cidade;
     this.descricao                  = descricao;
     this.titulo                     = titulo;
@@ -35,6 +36,7 @@ class Terreno{
     this.vlEntrada                  = vlEntrada;
     this.dataPrimeiraParcela        = dataPrimeiraParcela;
     this.dataUltimaParcela          = dataUltimaParcela;
+    this.dataDiaDoPagamento         = dataDiaDoPagamento;
     this.apresentarRegistro         = apresentarRegistro;
   }
 
@@ -49,6 +51,7 @@ class Terreno{
       "vlParcela"           : this.vlParcela,
       "dataPrimeiraParcela" : this.dataPrimeiraParcela,
       "dataUltimaParcela"   : this.dataUltimaParcela,
+      "dataDiaDoPagamento"  : this.dataDiaDoPagamento,
       "apresentarRegistro"  : this.apresentarRegistro
     };
 
@@ -211,6 +214,12 @@ class Terreno{
 
   set dataUltimaParcela(String value) {
     _dataUltimaParcela = value;
+  }
+
+  String get dataDiaDoPagamento => _dataDiaDoPagamento;
+
+  set dataDiaDoPagamento(String value) {
+    _dataDiaDoPagamento = value;
   }
 
   String get apresentarRegistro => _apresentarRegistro;

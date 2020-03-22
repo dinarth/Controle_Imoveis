@@ -98,6 +98,14 @@ class _TerceiraPaginaState extends State<TerceiraPagina> {
                         Text("${terreno.dataUltimaParcela}")
                       ],
                     ),
+                    Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text("Dia do Pagamento: "),
+                        Text("${terreno.dataDiaDoPagamento}")
+                      ],
+                    ),
                   ],
                 )
             )

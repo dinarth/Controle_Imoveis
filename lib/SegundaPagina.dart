@@ -126,6 +126,7 @@ class _SegundaPaginaState extends State<SegundaPagina> {
                         String vlEntrada                      = item['vlEntrada'];
                         String dataPrimeiraParcela            = item['dataPrimeiraParcela'];
                         String dataUltimaParcela              = item['dataUltimaParcela'];
+                        String dataDiaDoPagamento             = item['dataDiaDoPagamento'];
                         String apresentarRegistro             = item['apresentarRegistro'];
                         String idTerreno                      = item.documentID;
 
@@ -138,6 +139,7 @@ class _SegundaPaginaState extends State<SegundaPagina> {
                             vlEntrada,
                             dataPrimeiraParcela,
                             dataUltimaParcela,
+                            dataDiaDoPagamento,
                             apresentarRegistro);
 
                         return  Card(
@@ -236,9 +238,10 @@ class _SegundaPaginaState extends State<SegundaPagina> {
     String vlParcela              = "";
     String dataPrimeiraParcela    = "";
     String dataUltimaParcela      = "";
+    String dataDiaDoPagamento     = "";
     String apresentarRegistro     = "";
     Terreno terreno = new Terreno(cidade, descricao,titulo, vlParcela, vlTotal,
-        vlEntrada, dataPrimeiraParcela, dataUltimaParcela, apresentarRegistro);
+        vlEntrada, dataPrimeiraParcela, dataUltimaParcela, dataDiaDoPagamento, apresentarRegistro);
 
     terreno.excluirTerreno(idUsuarioLogado, idTerreno);
 
@@ -255,9 +258,10 @@ class _SegundaPaginaState extends State<SegundaPagina> {
     String vlParcela              = "";
     String dataPrimeiraParcela    = "";
     String dataUltimaParcela      = "";
+    String dataDiaDoPagamento     = "";
     String apresentarRegistro     = "";
     Terreno terreno = new Terreno(cidade, descricao,titulo, vlParcela, vlTotal,
-        vlEntrada, dataPrimeiraParcela, dataUltimaParcela, apresentarRegistro);
+        vlEntrada, dataPrimeiraParcela, dataUltimaParcela, dataDiaDoPagamento, apresentarRegistro);
 
   //  terreno.excluirTerreno(idUsuarioLogado, idTerreno);
   }

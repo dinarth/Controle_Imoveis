@@ -39,6 +39,7 @@ class _AtualizarTerrenoState extends State<AtualizarTerreno> {
   TextEditingController _vlParcelaTerrenoController      = MoneyMaskedTextController(decimalSeparator: ',', thousandSeparator: '.',leftSymbol: 'R\$');
   TextEditingController _dataPrimeiraParcelaController   = TextEditingController();
   TextEditingController _dataUltimaParcelaController     = TextEditingController();
+  TextEditingController _dataDiaDoPagamentoController    = TextEditingController();
 
 
 
@@ -52,6 +53,7 @@ class _AtualizarTerrenoState extends State<AtualizarTerreno> {
     _vlParcelaTerrenoController.text    = currencyConverse(terreno.vlParcela);
     _dataPrimeiraParcelaController.text = terreno.dataPrimeiraParcela;
     _dataUltimaParcelaController.text   = terreno.dataUltimaParcela;
+    _dataDiaDoPagamentoController.text  = terreno.dataDiaDoPagamento;
 
   }
 
@@ -191,6 +193,24 @@ class _AtualizarTerrenoState extends State<AtualizarTerreno> {
                       ),
 
                     ),
+                    DateTimeField(
+                      format: format,
+                      onShowPicker: (context, currentValue){
+                        return showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(anoAtual),
+                            lastDate: DateTime(anoAtual + 20));
+                      },
+                      controller: _dataDiaDoPagamentoController,
+                      style: TextStyle(
+                          fontSize: 22
+                      ),
+                      decoration: InputDecoration(
+                          labelText: "Dia do pagamento"
+                      ),
+
+                    ),
 
 
 
@@ -232,11 +252,12 @@ class _AtualizarTerrenoState extends State<AtualizarTerreno> {
     String vlParcela              = _vlParcelaTerrenoController.text.substring(2);
     String dataPrimeiraParcela    = _dataPrimeiraParcelaController.text;
     String dataUltimaParcela      = _dataUltimaParcelaController.text;
+    String dataDiaDoPagamento     = _dataDiaDoPagamentoController.text;
     String apresentarRegistro     = '1';
 //    String idUsuarioLogado        = uid;
 
     //criando objeto Terreno
-    Terreno terreno               =  Terreno(cidade, descricao,titulo, vlParcela, vlTotal, vlEntrada, dataPrimeiraParcela, dataUltimaParcela, apresentarRegistro);
+    Terreno terreno               =  Terreno(cidade, descricao,titulo, vlParcela, vlTotal, vlEntrada, dataPrimeiraParcela, dataUltimaParcela, dataDiaDoPagamento, apresentarRegistro);
 
     terreno.alterarTerreno(terreno, idUsuarioLogado, idTerreno);
 
