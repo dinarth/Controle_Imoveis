@@ -14,7 +14,7 @@ description: Projeto para controlar os lotes adquiridos.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
   datetime_picker_formfield: ^0.4.3
@@ -22,6 +22,9 @@ dependencies:
   intl: ^0.15.8
   flutter_masked_text: ^0.7.0
   flutter_money_formatter: ^0.8.3
+  flutter_local_notifications: ^1.3.0
+  path_provider: ^1.6.5
+
   #########FIREBASE############
   firebase_core: ^0.4.0+5 #recursos básicos
   cloud_firestore: ^0.12.5 #banco de dados
